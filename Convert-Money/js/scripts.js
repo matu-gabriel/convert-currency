@@ -3,10 +3,13 @@ const currentValueToConvert = document.querySelector(
   ".current-value-to-convert"
 );
 const selectOption = document.querySelector(".select-option");
+const selectOptionCurrent = document.querySelector(".select-option-current");
 const currentValeu = document.querySelector(".current-value");
 
 function convertMoney() {
   const inputCurrency = document.querySelector(".input-currency").value;
+
+  console.log(selectOptionCurrent.value, selectOption.value);
 
   if (selectOption.value == "dolar") {
     currentValeu.innerHTML = new Intl.NumberFormat("en-US", {
@@ -38,21 +41,76 @@ function convertMoney() {
 
 function changeCurrency() {
   const currencyName = document.querySelector("#currency-name");
+  const currencyNameToConvert = document.querySelector(
+    "#currency-name-to-convert"
+  );
+  const countryFlagConvert = document.querySelector(".country-flag-convert");
   const countryFlag = document.querySelector(".country-flag");
 
+  if (selectOptionCurrent.value === selectOption.value) {
+    buttonConvert.style.display = "none";
+  } else {
+    buttonConvert.style.display = "block";
+  }
   if (selectOption.value == "dolar") {
     currencyName.innerHTML = "Dólar";
-    countryFlag.src = "./assets/estados-unidos.png";
+    countryFlagConvert.src = "./assets/estados-unidos.png";
   } else if (selectOption.value == "euro") {
     currencyName.innerHTML = "Euro";
-    countryFlag.src = "./assets/euro.png";
+    countryFlagConvert.src = "./assets/euro.png";
   } else if (selectOption.value == "libra") {
     currencyName.innerHTML = "Libra";
-    countryFlag.src = "./assets/libra1.png";
+    countryFlagConvert.src = "./assets/libra1.png";
   } else if (selectOption == "bitcoin") {
     currencyName.innerHTML = "Bitcoin";
-    countryFlag.src = "./assets/bitcoin1.png";
+    countryFlagConvert.src = "./assets/bitcoin1.png";
+  } else if (selectOption.value == "real") {
+    currencyName.innerHTML = "Real Brasileiro";
+    countryFlagConvert.src = "./assets/brasil2.png";
   }
+
+  // switch (selectOption.value) {
+  //   case "dolar":
+  //     currencyName.innerHTML = "Dólar";
+  //     countryFlag.src = "./assets/estados-unidos.png";
+  //     break;
+  //   case "euro":
+  //     currencyName.innerHTML = "Euro";
+  //     countryFlag.src = "./assets/euro.png";
+  //     break;
+  //   case "libra":
+  //     currencyName.innerHTML = "Libra";
+  //     countryFlag.src = "./assets/libra1.png";
+  //     break;
+  //   case "bitcoin":
+  //     currencyName.innerHTML = "Bitcoin";
+  //     countryFlag.src = "./assets/bitcoin1.png";
+  //   case "real":
+  //     currencyName.innerHTML = "Real Brasileiro";
+  //     countryFlag.src = "./assets/brasil2.png";
+  //   default:
+  //     break;
+  // }
+
+  // switch (selectOptionCurrent.value) {
+  //   case "dolar":
+  //     currencyNameToConvert.innerHTML = "Dólar";
+  //     countryFlagConvert.src = "./assets/estados-unidos.png";
+  //     break;
+  //   case "euro":
+  //     currencyNameToConvert.innerHTML = "Euro";
+  //     countryFlagConvert.src = "./assets/euro.png";
+  //     break;
+  //   case "libra":
+  //     currencyNameToConvert.innerHTML = "Libra";
+  //     countryFlagConvert.src = "./assets/libra1.png";
+  //     break;
+  //   case "bitcoin":
+  //     currencyNameToConvert.innerHTML = "Bitcoin";
+  //     countryFlagConvert.src = "./assets/bitcoin1.png";
+  //   default:
+  //     break;
+  // }
 
   convertMoney();
 }
