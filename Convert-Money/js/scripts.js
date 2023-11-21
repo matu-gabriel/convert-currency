@@ -18,11 +18,16 @@ function convertMoney() {
       style: "currency",
       currency: "EUR",
     }).format(inputCurrency / 5.31);
-    // } else if (selectOption.value == "libra") {
-    //   currentValeu.innerHTML = new Intl.NumberFormat("", {
-    //     style: "currency",
-    //     currency: "",
-    //   });
+  } else if (selectOption.value == "libra") {
+    currentValeu.innerHTML = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(inputCurrency / 6.07);
+  } else if (selectOption.value == "bitcoin") {
+    currentValeu.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "BTC",
+    }).format(inputCurrency / 181974.48);
   }
 
   currentValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
@@ -41,6 +46,12 @@ function changeCurrency() {
   } else if (selectOption.value == "euro") {
     currencyName.innerHTML = "Euro";
     countryFlag.src = "./assets/euro.png";
+  } else if (selectOption.value == "libra") {
+    currencyName.innerHTML = "Libra";
+    countryFlag.src = "./assets/libra1.png";
+  } else if (selectOption == "bitcoin") {
+    currencyName.innerHTML = "Bitcoin";
+    countryFlag.src = "./assets/bitcoin1.png";
   }
 
   convertMoney();
