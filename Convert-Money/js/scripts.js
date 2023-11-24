@@ -9,8 +9,6 @@ const currentValeu = document.querySelector(".current-value");
 function convertMoney() {
   const inputCurrency = document.querySelector(".input-currency").value;
 
-  console.log(selectOptionCurrent.value, selectOption.value);
-
   if (selectOption.value == "dolar") {
     currentValeu.innerHTML = new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -31,8 +29,12 @@ function convertMoney() {
       style: "currency",
       currency: "BTC",
     }).format(inputCurrency / 181974.48);
+  } else if (selectOption.value == "real") {
+    currentValeu.innerHTML = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(inputCurrency);
   }
-
   currentValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -41,11 +43,7 @@ function convertMoney() {
 
 function changeCurrency() {
   const currencyName = document.querySelector("#currency-name");
-  const currencyNameToConvert = document.querySelector(
-    "#currency-name-to-convert"
-  );
   const countryFlagConvert = document.querySelector(".country-flag-convert");
-  const countryFlag = document.querySelector(".country-flag");
 
   if (selectOptionCurrent.value === selectOption.value) {
     buttonConvert.style.display = "none";
@@ -61,7 +59,7 @@ function changeCurrency() {
   } else if (selectOption.value == "libra") {
     currencyName.innerHTML = "Libra";
     countryFlagConvert.src = "./assets/libra1.png";
-  } else if (selectOption == "bitcoin") {
+  } else if (selectOption.value == "bitcoin") {
     currencyName.innerHTML = "Bitcoin";
     countryFlagConvert.src = "./assets/bitcoin1.png";
   } else if (selectOption.value == "real") {
@@ -69,52 +67,32 @@ function changeCurrency() {
     countryFlagConvert.src = "./assets/brasil2.png";
   }
 
-  // switch (selectOption.value) {
-  //   case "dolar":
-  //     currencyName.innerHTML = "Dólar";
-  //     countryFlag.src = "./assets/estados-unidos.png";
-  //     break;
-  //   case "euro":
-  //     currencyName.innerHTML = "Euro";
-  //     countryFlag.src = "./assets/euro.png";
-  //     break;
-  //   case "libra":
-  //     currencyName.innerHTML = "Libra";
-  //     countryFlag.src = "./assets/libra1.png";
-  //     break;
-  //   case "bitcoin":
-  //     currencyName.innerHTML = "Bitcoin";
-  //     countryFlag.src = "./assets/bitcoin1.png";
-  //   case "real":
-  //     currencyName.innerHTML = "Real Brasileiro";
-  //     countryFlag.src = "./assets/brasil2.png";
-  //   default:
-  //     break;
-  // }
+  const currencyNameToConvert = document.querySelector(
+    "#currency-name-to-convert"
+  );
+  const countryFlag = document.querySelector(".country-flag");
 
-  // switch (selectOptionCurrent.value) {
-  //   case "dolar":
-  //     currencyNameToConvert.innerHTML = "Dólar";
-  //     countryFlagConvert.src = "./assets/estados-unidos.png";
-  //     break;
-  //   case "euro":
-  //     currencyNameToConvert.innerHTML = "Euro";
-  //     countryFlagConvert.src = "./assets/euro.png";
-  //     break;
-  //   case "libra":
-  //     currencyNameToConvert.innerHTML = "Libra";
-  //     countryFlagConvert.src = "./assets/libra1.png";
-  //     break;
-  //   case "bitcoin":
-  //     currencyNameToConvert.innerHTML = "Bitcoin";
-  //     countryFlagConvert.src = "./assets/bitcoin1.png";
-  //   default:
-  //     break;
-  // }
+  if (selectOptionCurrent.value == "dolar") {
+    currencyNameToConvert.innerHTML = "Dólar";
+    countryFlag.src = "./assets/estados-unidos.png";
+  } else if (selectOptionCurrent.value == "euro") {
+    currencyNameToConvert.innerHTML = "Euro";
+    countryFlag.src = "./assets/euro.png";
+  } else if (selectOptionCurrent.value == "libra") {
+    currencyNameToConvert.innerHTML = "Libra";
+    countryFlag.src = "./assets/libra1.png";
+  } else if (selectOptionCurrent.value == "bitcoin") {
+    currencyNameToConvert.innerHTML = "Bitcoin";
+    countryFlag.src = "./assets/bitcoin1.png";
+  } else if (selectOptionCurrent.value == "real") {
+    currencyNameToConvert.innerHTML = "Real Brasileiro";
+    countryFlag.src = "./assets/brasil2.png";
+  }
 
   convertMoney();
 }
 
 selectOption.addEventListener("change", changeCurrency);
+selectOptionCurrent.addEventListener("change", changeCurrency);
 
 buttonConvert.addEventListener("click", convertMoney);
