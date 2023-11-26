@@ -6,29 +6,39 @@ const selectOption = document.querySelector(".select-option");
 const selectOptionCurrent = document.querySelector(".select-option-current");
 const currentValeu = document.querySelector(".current-value");
 
+const dolarToday = 4.9;
+const euroToday = 5.35;
+const libraToday = 6.16;
+const bitcoinToday = 185266.11;
+
+console.log(currentValeu);
+
 function convertMoney() {
   const inputCurrency = document.querySelector(".input-currency").value;
+
+  //Converter do real para...
 
   if (selectOption.value == "dolar") {
     currentValeu.innerHTML = new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
-    }).format(inputCurrency / 5.1);
+    }).format(inputCurrency / dolarToday);
   } else if (selectOption.value == "euro") {
     currentValeu.innerHTML = new Intl.NumberFormat("de-DE", {
       style: "currency",
       currency: "EUR",
-    }).format(inputCurrency / 5.31);
+    }).format(inputCurrency / euroToday);
   } else if (selectOption.value == "libra") {
     currentValeu.innerHTML = new Intl.NumberFormat("en-GB", {
       style: "currency",
       currency: "GBP",
-    }).format(inputCurrency / 6.07);
+    }).format(inputCurrency / libraToday);
   } else if (selectOption.value == "bitcoin") {
     currentValeu.innerHTML = new Intl.NumberFormat("de-DE", {
       style: "currency",
       currency: "BTC",
-    }).format(inputCurrency / 181974.48);
+      minimumFractionDigits: 3,
+    }).format(inputCurrency / bitcoinToday);
   } else if (selectOption.value == "real") {
     currentValeu.innerHTML = new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -39,6 +49,244 @@ function convertMoney() {
     style: "currency",
     currency: "BRL",
   }).format(inputCurrency);
+
+  //Converter de dólar para...
+
+  if (selectOptionCurrent.value == "dolar" && selectOption.value == "euro") {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR",
+    }).format(0.9141 * inputCurrency);
+  } else if (
+    selectOptionCurrent.value == "dolar" &&
+    selectOption.value == "libra"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(0.7931 * inputCurrency);
+  } else if (
+    selectOptionCurrent.value == "dolar" &&
+    selectOption.value == "bitcoin"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "BTC",
+      minimumFractionDigits: 3,
+    }).format(inputCurrency / 38170);
+  } else if (
+    selectOptionCurrent.value == "dolar" &&
+    selectOption.value == "real"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(inputCurrency * 4.91);
+  } else if (selectOptionCurrent.value == "dolar") {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(inputCurrency);
+  }
+
+  // Converter de euro para...
+  if (selectOptionCurrent.value == "euro" && selectOption.value == "dolar") {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(inputCurrency * 1.09);
+  } else if (
+    selectOptionCurrent.value == "euro" &&
+    selectOption.value == "libra"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(inputCurrency * 0.87);
+  } else if (
+    selectOptionCurrent.value == "euro" &&
+    selectOption.value == "bitcoin"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "BTC",
+      minimumFractionDigits: 3,
+    }).format(inputCurrency / 30029.92);
+  } else if (
+    selectOptionCurrent.value == "euro" &&
+    selectOption.value == "real"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(inputCurrency * 5.37);
+  } else if (selectOptionCurrent.value == "euro") {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR",
+    }).format(inputCurrency);
+  }
+
+  // Converter de libra para...
+  if (selectOptionCurrent.value == "libra" && selectOption.value == "dolar") {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(inputCurrency * 1.26);
+  } else if (
+    selectOptionCurrent.value == "libra" &&
+    selectOption.value == "euro"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR",
+    }).format(inputCurrency * 1.15);
+  } else if (
+    selectOptionCurrent.value == "libra" &&
+    selectOption.value == "bitcoin"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "BTC",
+      minimumFractionDigits: 3,
+    }).format(inputCurrency / 34466.75);
+  } else if (
+    selectOptionCurrent.value == "libra" &&
+    selectOption.value == "real"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(inputCurrency * 6.18);
+  } else if (selectOptionCurrent.value == "libra") {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(inputCurrency);
+  }
+
+  // Converter bitcoin para...
+  if (selectOptionCurrent.value == "bitcoin" && selectOption.value == "dolar") {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "BTC",
+      minimumFractionDigits: 3,
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(inputCurrency * 37728.9);
+  } else if (
+    selectOptionCurrent.value == "bitcoin" &&
+    selectOption.value == "libra"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "BTC",
+      minimumFractionDigits: 3,
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(inputCurrency * 29941.19);
+  } else if (
+    selectOptionCurrent.value == "bitcoin" &&
+    selectOption.value == "euro"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "BTC",
+      minimumFractionDigits: 3,
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR",
+    }).format(inputCurrency * 34469.04);
+  } else if (
+    selectOptionCurrent.value == "bitcoin" &&
+    selectOption.value == "real"
+  ) {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "BTC",
+      minimumFractionDigits: 3,
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(inputCurrency * 185022.46);
+  } else if (selectOptionCurrent.value == "bitcoin") {
+    currentValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "BTC",
+      minimumFractionDigits: 3,
+    }).format(inputCurrency);
+    currentValeu.innerHTML = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "BTC",
+      minimumFractionDigits: 3,
+    }).format(inputCurrency);
+  }
 }
 
 function changeCurrency() {
